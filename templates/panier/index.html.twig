@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+
+<table>
+    <thead>
+      <tr>
+          <th>Titre</th>
+          <th>Image</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+          <th>Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        {% for elt in lists %}
+            
+            <tr>
+                <td>{{elt.produit.titre}}</td>
+                <td><img src="{{asset('images/produit/')}}{{elt.produit.img}}" alt="" width="50"></td>
+                
+                <td>
+                    
+                    <a href="{{path('app_supprimer_panier', {'id': elt.produit.id}) }}" class="btn">
+                        <i class="fa-solid fa-minus"></i>
+                    </a>
+                    {{elt.quantite}}
+                    <a href="{{path('app_ajout_panier', {'id': elt.produit.id}) }}" class="btn">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                </td>
+
+                <td>{{elt.produit.prix}} €</td>
+                <td>{{elt.quantite * elt.produit.prix}} €</td>
+            </tr>
+        {% endfor %}
+      
+    </tbody>
+  </table>
+  <div class="net_a_payer">
+    Total à payer: 
+    <button class="btn waves-effect waves-light">
+        <i class="material-icons left">
+          attach_money
+          </i>
+        
+          {{ net_a_payer}}
+      </button>
+      <h4>Passez à la caisse !</h4>
+
+      
+      <a href="{{path('app_commande_new')}}">
+       <button class="btn btn-warning">
+           Commandez vos articles
+       </button>
+      </a>
+
+   </div>
+
+{% endblock %}
