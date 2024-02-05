@@ -1,12 +1,16 @@
-*,*::before,*::after{
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     margin-top: 5rem;
 }
-header{
+
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,17 +21,27 @@ header{
     justify-content: space-between;
     align-items: center;
 
-
-    nav ul{
+    #items-nav {
         display: flex;
-        gap: 2rem;
-        list-style: none;
-    
-        a{
-            color: #fff;
-            text-decoration: none;
+        gap: 3rem;
+
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+
+
         }
-
+        ul{
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
     }
+}
 
+a {
+    color: #fff;
+    text-decoration: none;
 }

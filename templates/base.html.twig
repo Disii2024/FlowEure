@@ -20,22 +20,22 @@
         <div>
             <img src="{{asset('img/logo.svg')}}" alt="">
         </div>
-        <div>
+        <div id="items-nav">
             <nav>
                 <ul>
                     <li><a href="{{path('app_home')}}">Acceuil</a></li>
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
                     {# <li><a href="{{path('')}}">Contact</a></li> #}
-                    {# <li><a href="{{path('')}}">Panier</a></li> #}
+                    <li><a href="{{path('app_panier')}}">Panier</a></li>
                 </ul>
 
             </nav>
-            <div>
+           
                 <ul>
                     <li><a href="{{path('app_login')}}">Connexion</a></li>
                     <li><a href="{{path('app_register')}}">Inscription</a></li>
                 </ul>
-            </div>
+         
         </div>
     </header>
     {% block body %}
