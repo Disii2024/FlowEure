@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body{
+    margin-top: 5rem;
+}
 header{
     position: fixed;
     top: 0;
