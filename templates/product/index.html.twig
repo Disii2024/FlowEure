@@ -8,11 +8,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
-                <th>Descrip</th>
                 <th>Img</th>
-                <th>Qte</th>
                 <th>Prix</th>
                 <th>actions</th>
             </tr>
@@ -20,15 +17,11 @@
         <tbody>
         {% for product in products %}
             <tr>
-                <td>{{ product.id }}</td>
                 <td>{{ product.titre }}</td>
-                <td>{{ product.descrip }}</td>
                 <td>{{ product.img }}</td>
-                <td>{{ product.qte }}</td>
                 <td>{{ product.prix }}</td>
                 <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +32,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
 {% endblock %}
