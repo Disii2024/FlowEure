@@ -6,8 +6,10 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-    {% block stylesheets %}
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+    
     {% endblock %}
 
     {% block javascripts %}
@@ -18,7 +20,7 @@
 <body>
     <header>
         <div>
-            <img src="{{asset('img/logo.svg')}}" alt="">
+            <a href="{{path('app_home')}}"><img src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <div id="items-nav">
             <nav>
@@ -26,16 +28,25 @@
                     <li><a href="{{path('app_home')}}">Acceuil</a></li>
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
                     {# <li><a href="{{path('')}}">Contact</a></li> #}
-                    <li><a href="{{path('app_panier')}}">Panier</a></li>
+                    <li><a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
 
             </nav>
-           
-                <ul>
-                    <li><a href="{{path('app_login')}}">Connexion</a></li>
-                    <li><a href="{{path('app_register')}}">Inscription</a></li>
-                </ul>
-         
+
+            <ul>
+                {% if app.user %}
+                <li>
+                    {# <a href="badges.html"><img src="{{asset('images/avatars/')}}{{app.user.avatar}}"
+                            class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> {{app.user.pseudo}}</a> #}
+                <li><a href="{{path('app_logout')}}">Deconnexion</a></li>
+
+                </li>
+                {% else %}
+                <li><a href="{{path('app_login')}}">Connexion</a></li>
+                <li><a href="{{path('app_register')}}">Inscription</a></li>
+                {% endif %}
+            </ul>
+
         </div>
     </header>
     {% block body %}
