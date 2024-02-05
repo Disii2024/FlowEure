@@ -3,33 +3,23 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
+<h1>Product index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Img</th>
-                <th>Prix</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+
+
         {% for product in products %}
-            <tr>
-                <td>{{ product.titre }}</td>
-                <td>{{ product.img }}</td>
-                <td>{{ product.prix }}</td>
-                <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
-                </td>
-            </tr>
+        <div>
+            <h3> {{ product.titre }} </h3>
+            <img src="{{asset('images/products/')}}{{ product.img }}" width="150px" alt="">
+            <p>{{ product.prix }}</p>
+            <a href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
+        </div>
+
         {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
+   
+            <p>pas de produits</p>
+     
         {% endfor %}
-        </tbody>
-    </table>
+
 
 {% endblock %}

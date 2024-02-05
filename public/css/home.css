@@ -1,0 +1,33 @@
+h1 {
+    font-family: "Italiana", sans-serif;
+}
+
+:root {
+    --gradient-three: linear-gradient(160deg, #bbf6ec 0%, #dff6d6 40%, #fffbbe 100%);
+    --clr-green: #dff6d6;
+}
+
+#hero-banner {
+    position: relative;
+}
+
+#hero-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background-color: #474747;
+    opacity: 80%;
+    padding: 25px;
+
+}
+
+.linear-gradient {
+    border: solid;
+    border-image-slice: 3;
+    border-image-source: var(--gradient-three);
+    border-image-width: 10px;
+    
+
+}
