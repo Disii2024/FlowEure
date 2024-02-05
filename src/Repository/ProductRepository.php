@@ -21,6 +21,17 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+
+       public function productInHome($value)
+   {
+       return $this->createQueryBuilder('j')
+           ->orderBy('j.id', 'DESC')
+           ->setMaxResults($value)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */

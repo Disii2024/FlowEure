@@ -3,18 +3,38 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Apprenant/Documents/Antoine_LE_JEAN_DISII_2023-2024/moussa/floweure/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/Apprenant/Documents/Antoine_LE_JEAN_DISII_2023-2024/moussa/floweure/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+<div class="row">
+    {% for product in productInHome %}
+    <div class="col-md-4 s12 m4">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{asset('images/jeux/')}}{{product.img}}" height="250">
+            <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+              <span class="card-title">{{product.titre}}</span>
+              <button class="btn waves-effect waves-light">
+                <i class="material-icons left">
+                  attach_money
+                  </i>
+                {% if product.prix %}
+                {{product.prix}}
+                {% else %}
+                80
+                {% endif %} 
+              </button>
+              {# <a href="{{path('app_ajout_panier', {'id': product.id}) }}"> #}
+                <button class="btn waves-effect waves-light">
+                  <i class="material-icons">
+                    add_shopping_cart
+                    </i>
+                </button>
+              </a>
+         </div>
+        </div>
+      </div>
+    {% else %}
+        Pas de jeu pour le moment
+    {% endfor %}
+  </div>
 {% endblock %}
