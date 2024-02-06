@@ -21,6 +21,10 @@ h1 {
     opacity: 80%;
     padding: 25px;
 
+
+    #hero-img{
+        height: 100vh;
+    }
 }
 
 .linear-gradient {

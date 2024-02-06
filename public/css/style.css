@@ -46,7 +46,7 @@ header {
         }
     }
 
-    #burger{
+    #icon-burger{
         display: block;
         i{
             color: #fff;
@@ -82,12 +82,17 @@ footer{
     width: 60%;
 }
 
-@media(min-width: 475px ) {
-    body{
-        background-color: red ;
-    }    
+.dispNone{
+    display: none;
+}
 
-        #burger{
-        display: none ;
+@media screen and (max-width: 475px ) {
+ 
+        body{
+            background-color: red;
+            color: red;
+        }
+        #icon-burger{
+        display: none;
     }
 }

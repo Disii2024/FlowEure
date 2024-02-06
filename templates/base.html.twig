@@ -19,6 +19,8 @@
     {% endblock %}
 
     {% block javascripts %}
+    <script src="/js/app.js"></script>
+   
     {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
@@ -44,7 +46,7 @@
                     {% endif %}
                     {% endfor %}
                     {% endif %}
-                    <li id="burger">
+                    <li id="icon-burger">
                         <i class="fa-solid fa-bars"></i>
                     </li>
 
