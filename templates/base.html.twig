@@ -36,6 +36,11 @@
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
                     {# <li><a href="{{path('')}}">Contact</a></li> #}
                     <li><a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+{% if app.user %}
+                    <li><a href="">Dashboard</a></li>
+
+{% endif %}
+
                 </ul>
 
             </nav>
@@ -43,8 +48,8 @@
             <ul>
                 {% if app.user %}
                 <li>
-                    {# <a href="badges.html"><img src="{{asset('images/avatars/')}}{{app.user.avatar}}"
-                            class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> {{app.user.pseudo}}</a> #}
+                    <a href="app_profile_index"><img src="{{asset('images/avatars/')}}{{app.user.avatar}}"
+                            class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> {{app.user.pseudo}}</a>
                 <li><a href="{{path('app_logout')}}">Deconnexion</a></li>
 
                 </li>
@@ -57,19 +62,11 @@
         </div>
     </header>
     <main>
-        <section id="hero-banner">
-            <img src="{{asset('img/home/image-home.png')}}" width="100%" height="100%" alt="">
-            <div id="hero-card" class="linear-gradient">
-                <div  >
-                    <h1>Flow'Eure</h1>
-                    <p>Emballez vos moments précieux de la beauté florale avec Flow'eure. Livraison rapide à Evreux, nos
-                        bouquets d'exception égayent chaque instant. Commandez maintenant, laissez la magie fleurir!</p>
-                </div>
-            </div>
-        </section>
+{% block body %}
+{% endblock %}
     </main>
     <footer>
-        <div>
+        <div class="logo-nav">
             <a href="{{path('app_home')}}"><img src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <nav>
