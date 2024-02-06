@@ -36,10 +36,15 @@
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
                     {# <li><a href="{{path('')}}">Contact</a></li> #}
                     <li><a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a></li>
-{% if app.user %}
-                    <li><a href="">Dashboard</a></li>
+         {% if app.user %}
+                        {% for role in app.user.roles %}
+                            {% if role == "ROLE_ADMIN" %}
+                                <li><a href="{{path('admin')}}">Dashboard</a></li>
+                                {% else %}
+                            {% endif %}
+                        {% endfor %}
+                {% endif %}
 
-{% endif %}
 
                 </ul>
 
@@ -47,6 +52,8 @@
 
             <ul>
                 {% if app.user %}
+
+
                 <li>
                     {# <a href="badges.html"><img src="{{asset('images/avatars/')}}{{app.user.avatar}}"
                             class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> {{app.user.pseudo}}</a> #}

@@ -31,4 +31,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-user', User::class);
     }
+
+    
 }

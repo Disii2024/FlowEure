@@ -28,6 +28,4 @@ h1 {
     border-image-slice: 3;
     border-image-source: var(--gradient-three);
     border-image-width: 10px;
-    
-
 }
