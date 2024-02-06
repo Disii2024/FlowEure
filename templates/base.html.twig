@@ -35,25 +35,33 @@
                     <li><a href="{{path('app_home')}}">Acceuil</a></li>
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
                     {# <li><a href="{{path('')}}">Contact</a></li> #}
-                    <li><a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a></li>
-         {% if app.user %}
-                        {% for role in app.user.roles %}
-                            {% if role == "ROLE_ADMIN" %}
-                                <li><a href="{{path('admin')}}">Dashboard</a></li>
-                                {% else %}
-                            {% endif %}
-                        {% endfor %}
-                {% endif %}
 
+                    {% if app.user %}
+                    {% for role in app.user.roles %}
+                    {% if role == "ROLE_ADMIN" %}
+                    <li><a href="{{path('admin')}}">Dashboard</a></li>
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    <li id="burger">
+                        <i class="fa-solid fa-bars"></i>
+                    </li>
 
                 </ul>
+               
+                    
+                 
+
 
             </nav>
 
             <ul>
                 {% if app.user %}
 
-
+                <li>
+                    <a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
                 <li>
                     <a href="/profile"><img src="{{asset('images/avatars/')}}{{app.user.avatar}}"
                             class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> {{app.user.pseudo}}</a>
@@ -69,8 +77,8 @@
         </div>
     </header>
     <main>
-{% block body %}
-{% endblock %}
+        {% block body %}
+        {% endblock %}
     </main>
     <footer>
         <div class="logo-nav">

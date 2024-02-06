@@ -1,0 +1,12 @@
+#products{
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 2rem;
+    a{
+        color: #000;
+    }
+}
+
+.details{
+    border: 1px ;
+}

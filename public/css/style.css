@@ -45,6 +45,13 @@ header {
             list-style: none;
         }
     }
+
+    #burger{
+        display: block;
+        i{
+            color: #fff;
+        }
+    }
 }
 
 a {
@@ -67,5 +74,20 @@ footer{
     #reseaux{
         display: flex;
         gap: 2rem;
+    }
+}
+
+.container{
+    margin: 0 auto;
+    width: 60%;
+}
+
+@media(min-width: 475px ) {
+    body{
+        background-color: red ;
+    }    
+
+        #burger{
+        display: none ;
     }
 }

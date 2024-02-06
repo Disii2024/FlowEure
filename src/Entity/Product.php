@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -95,10 +96,10 @@ class Product
 
     }
 
-public function getImageFile(): ?File
-{
+    public function getImageFile(): ?File
+    {
     return $this->imageFile;
-}
+    }
     public function getQte(): ?int
     {
         return $this->qte;
