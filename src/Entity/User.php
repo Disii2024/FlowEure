@@ -137,7 +137,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
         return $this->avatar;
     }
 
-    public function setAvatar(string $avatar): static
+    public function setAvatar(?string $avatar): static
     {
         $this->avatar = $avatar;
 

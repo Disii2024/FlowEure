@@ -41,7 +41,7 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile_edit', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('profile/edit.html.twig', [
@@ -58,6 +58,6 @@ class ProfileController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_', [], Response::HTTP_SEE_OTHER);
     }
 }
