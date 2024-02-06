@@ -3,14 +3,67 @@
 {% block title %}Acceuil{% endblock %}
 
 {% block body %}
-        <section id="hero-banner">
-            <img id="hero-img" src="{{asset('img/home/image-home.png')}}" width="100%" alt="">
-            <div id="hero-card" class="linear-gradient">
-                <div  >
-                    <h1>Flow'Eure</h1>
-                    <p>Emballez vos moments précieux de la beauté florale avec Flow'eure. Livraison rapide à Evreux, nos
-                        bouquets d'exception égayent chaque instant. Commandez maintenant, laissez la magie fleurir!</p>
-                </div>
+<link rel="stylesheet" href="/css/home.css">
+<section id="hero-banner">
+    {# <img id="hero-img" src="{{asset('img/home/image-home.png')}}" width="100%" alt=""> #}
+    <div>
+        <div id="hero-card" class="linear-gradient">
+            <h1>Flow'Eure</h1>
+            <p>Emballez vos moments précieux de la beauté florale avec Flow'eure. Livraison rapide à Evreux, nos
+                bouquets d'exception égayent chaque instant. Commandez maintenant, laissez la magie fleurir!</p>
+        </div>
+        <div id="button-banner" class="button">
+            <a href="#explorer-fleurs">Découvrir</a>
+        </div>
+    </div>
+</section>
+
+<section id="livraison-fleurs" class="container-home">
+    <div class="card-home">
+        <div id="img-home-1"><img src="{{asset('img/home/image-home-1.png')}}" alt=""></div>
+        <div id="text-yellow">
+            <p>Envie de nature pour votre intérieur ou pour faire plaisir à un proche, Flow'eure votre marché floral
+                depuis 2020 vous propose la livraison de fleurs et de plantes à Evreux. Une large collection de bouquets
+                et de brassées de fleurs mais également des plantes d'intérieurs vous attendent pour apporter un peu de
+                nature à vos intérieurs. 🌺</p>
+        </div>
+    </div>
+    <div class="card-home">
+        <div id="img-home-2"><img src="{{asset('img/home/image-home-3.png')}}" alt=""></div>
+        <div id="text-green">
+            <p>Nos bouquets sont confectionnés avec passion par nos artisans fleuristes avec des fleurs coupées fraîches
+                et de qualité pour répondre au mieux à vos attentes. Saint-Valentin, Fête des mères, anniversaire ou
+                simplement pour faire plaisir les occasions ne manquent pas pour faire livrer un bouquet de fleurs.
+                N'attendez plus et commandez vite un bouquet ou une plante, nous nous chargeons du reste ! 💐</p>
+        </div>
+    </div>
+    <div class="card-home">
+        <div id="img-home-3"><img src="{{asset('img/home/image-home-2.png')}}" alt=""></div>
+        <div id="text-blue">
+            <p>Nous assurons la livraison à domicile ou sur votre lieu de travail dans un délai de 4h.</p>
+            <div>
+                <img src="{{asset('img/home/livraison-rapide 2.png')}}" alt="">
+                <img src="{{asset('img/home/livraison-rapide 1.png')}}" alt="">
             </div>
-        </section>
+        </div>
+    </div>
+
+</section>
+<section id="explorer-fleurs" class="container-home">
+    <div id="card-yellow" class="card-explorer">
+        <h2>Galerie</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis vestibulum blandit.</p>
+        <a href="">Découvrir</a>
+    </div>
+    <div id="card-blue" class="card-explorer">
+        <h2>Visitez</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis vestibulum blandit.</p>
+        <a href="">Découvrir</a>
+    </div>
+    <div id="card-green" class="card-explorer">
+        <h2>Nos offres</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis vestibulum blandit.</p>
+        <a href="">Découvrir</a>
+    </div>
+</section>
 {% endblock %}

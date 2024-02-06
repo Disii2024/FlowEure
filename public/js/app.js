@@ -1,11 +1,11 @@
 // console.log('hello world!')
 
 const burger=document.querySelector('#icon-burger');
-const navList=document.querySelector('header nav ul')
+const navList=document.querySelector('#items-nav')
 
 burger.addEventListener('click', () => {
     if (window.innerWidth < 700) {
-        navList.classList.add('dispNone');
+        navList.classList.toggle('dispNone');
     }
 });
 navList.addEventListener('click', ()=> {
