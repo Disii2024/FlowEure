@@ -19,11 +19,11 @@ class CommentaireType extends AbstractType
             ->add('createdAt')
             ->add('product', EntityType::class, [
                 'class' => Product::class,
-'choice_label' => 'id',
+'choice_label' => 'Titre',
             ])
             ->add('auteur', EntityType::class, [
                 'class' => User::class,
-'choice_label' => 'id',
+'choice_label' => 'pseudo',
             ])
         ;
     }

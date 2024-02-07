@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\Commentaire;
+use App\Form\CommentaireType;
+use App\Repository\CommentaireRepository;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -55,10 +57,39 @@ class ProductController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
-    public function show(Product $product): Response
+    public function show(Product $product, Request $request, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository): Response
     {
+        /**
+         * PARTIE COMMENTAIRE
+         */
+        $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //Recuperation du user connecté qui est l'auteur du commentaire
+            // $this->getUser()
+
+            $commentaire->setAuteur($this->getUser());
+
+            //Recuperation du produit 
+            $commentaire->setProduct($product);
+
+            $entityManager->persist($commentaire);
+            $entityManager->flush();
+
+            //Message de confirmation 
+            $this->addFlash('success', 'votre commentaire a été bien ajouté');
+
+            return $this->redirectToRoute('app_product_show', ['id' =>$product->getId()]);
+        }
+        /**
+         * PARTIE COMMENTAIRE
+         */
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'form' => $form,
+            'commentaires' =>$commentaireRepository->findBy(['product'=>$product])
         ]);
     }
 
