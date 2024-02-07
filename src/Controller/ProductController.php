@@ -52,14 +52,41 @@ class ProductController extends AbstractController
 
         return $this->render('product/new.html.twig', [
             'product' => $product,
-
+            'form' => $form,
         ]);
     }
 
     #[Route('/show/{id}', name: 'app_product_show', methods: ['GET','POST'])]
-    public function show(Product $product, Request $request, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository): Response
-    {
-       
+    public function show(Product $product,Request $request, EntityManagerInterface $entityManager,
+    CommentaireRepository $commentaireRepository): Response
+    { /**
+     */
+         $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // $commentaire->setAuteur($this->getUser());
+
+
+            // $commentaire->setProduct($product);
+
+            $entityManager->persist($commentaire);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_commentaire_index', [], Response::HTTP_SEE_OTHER);
+        }
+     /**
+      * 
+      */
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+            'form' => $form,
+            'commentaires' => $product
+
+           
+        ]);
     }
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
