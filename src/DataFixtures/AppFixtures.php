@@ -37,7 +37,8 @@ class AppFixtures extends Fixture
             $user->setEmail($faker->email())
                  ->setPassword($faker->password('123456'))
                  ->setAvatar($faker->imageUrl($width = 640, $height = 480))
-                 ->setPseudo($faker->userName());
+                 ->setPseudo($faker->userName())
+                 ->setIsActif($faker->boolean('true'));
 
          $manager->persist($user);
 
@@ -45,9 +46,9 @@ class AppFixtures extends Fixture
         // for ($i=0;$i<20;$i++){
         //     $commentaire = new Commentaire();
         //     $commentaire->setContenu($faker->sentence(3))
-        //                 ->setProduct($faker->password('123456'))
+        //                 ->setProduct($faker->word())
         //                 ->setCreatedAt($faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null)) // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'))
-        //                 ->setAuteur($faker->firstName());
+        //                 ->setAuteur($faker->getPseudo());
 
         //  $manager->persist($user);
 
