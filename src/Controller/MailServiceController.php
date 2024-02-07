@@ -6,29 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 //mailer
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
-
-class MailService
-{
-    private $mailer;
-
-    public function __construct(MailerInterface $mailer)
-    {
-        $this->mailer = $mailer;
-    }
-
-    public function sendEmail($recipientEmail, $subject, $message)
-    {
-        $email = (new Email())
-            ->from('your_email@example.com')
-            ->to($recipientEmail)
-            ->subject($subject)
-            ->text($message);
-
-        $this->mailer->send($email);
-    }
-}
+use App\Service\MailService;
 
 // class MailServiceController extends AbstractController
 // {
@@ -40,3 +18,22 @@ class MailService
 //         ]);
 //     }
 // }
+
+class MailServiceController extends AbstractController
+{
+    #[Route('/mail/service', name: 'app_mail_service')]
+    public function index(MailService $mailService): Response
+    {
+        // Exemple d'utilisation de la classe MailService pour envoyer un e-mail
+        $recipientEmail = 'recipient@example.com';
+        $subject = 'Sujet de l\'e-mail';
+        $message = 'Contenu de l\'e-mail';
+
+        $mailService->sendEmail($recipientEmail, $subject, $message);
+
+        return $this->render('mail_service/index.html.twig', [
+            'controller_name' => 'MailServiceController',
+        ]);
+    }
+}
+
