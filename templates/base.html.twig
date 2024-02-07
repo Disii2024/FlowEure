@@ -16,14 +16,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     {% block stylesheets %}
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     {% endblock %}
 
     {% block javascripts %}
-    <script src="/js/app.js"></script>
+    <script defer src="{{asset('js/app.js')}}"></script>
    
-    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
     {% endblock %}
 </head>
 

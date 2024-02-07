@@ -52,45 +52,14 @@ class ProductController extends AbstractController
 
         return $this->render('product/new.html.twig', [
             'product' => $product,
-            'form' => $form,
+
         ]);
     }
 
-    #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_product_show', methods: ['GET','POST'])]
     public function show(Product $product, Request $request, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository): Response
     {
-        /**
-         * PARTIE COMMENTAIRE
-         */
-        $commentaire = new Commentaire();
-        $form = $this->createForm(CommentaireType::class, $commentaire);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            //Recuperation du user connecté qui est l'auteur du commentaire
-            // $this->getUser()
-
-            $commentaire->setAuteur($this->getUser());
-
-            //Recuperation du produit 
-            $commentaire->setProduct($product);
-
-            $entityManager->persist($commentaire);
-            $entityManager->flush();
-
-            //Message de confirmation 
-            $this->addFlash('success', 'votre commentaire a été bien ajouté');
-
-            return $this->redirectToRoute('app_product_show', ['id' =>$product->getId()]);
-        }
-        /**
-         * PARTIE COMMENTAIRE
-         */
-        return $this->render('product/show.html.twig', [
-            'product' => $product,
-            'form' => $form,
-            'commentaires' =>$commentaireRepository->findBy(['product'=>$product])
-        ]);
+       
     }
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
@@ -111,7 +80,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {

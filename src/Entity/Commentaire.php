@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use App\Repository\CommentaireRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,6 +25,14 @@ class Commentaire
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
     private ?User $auteur = null;
+
+        public function __construct()
+    {
+         $this->createdAt = new \DateTimeImmutable();
+        // $this->auteur = new User();
+        // $this->product = new Product();
+    }
+
 
     public function getId(): ?int
     {
@@ -54,17 +63,17 @@ class Commentaire
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
+     public function getCreatedAt(): ?\DateTimeImmutable
+     {
+         return $this->createdAt;
+     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
+      public function setCreatedAt(\DateTimeImmutable $createdAt): static
+      {
+          $this->createdAt = $createdAt;
 
-        return $this;
-    }
+          return $this;
+      }
 
     public function getAuteur(): ?User
     {

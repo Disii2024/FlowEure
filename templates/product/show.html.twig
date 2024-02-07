@@ -31,7 +31,7 @@
                 <th>Prix</th>
                 <td>{{ product.prix }}</td>
             </tr>
-        </tbody>
+        </tbody>            
     </table>
 
     <a href="{{ path('app_product_index') }}">back to list</a>
@@ -40,23 +40,5 @@
 
     {{ include('product/_delete_form.html.twig') }}
 
-        <div class="commentaire">
-        <h4>Listing des commentaires</h4>
-            {% for commentaire in commentaires %}
-            <tr>
-                
-                <td></td>
-                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
 
-                Posté par <i>{{commentaire.auteur.pseudo}}</i>, le {{ commentaire.createdAt ? commentaire.createdAt|date('d-m-Y H:i:s') : '' }}
-                <p>
-                    {{ commentaire.message}}
-                </p>
-
-            {% endfor %}
-            <hr>
-        <h4>Laisser votre commentaire</h4>
-        {{ include('commentaire/_form.html.twig') }}
-    </div>
 {% endblock %}
