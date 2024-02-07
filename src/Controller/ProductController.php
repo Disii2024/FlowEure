@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\Commentaire;
+use App\Form\CommentaireType;
+use App\Repository\CommentaireRepository;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,16 +52,14 @@ class ProductController extends AbstractController
 
         return $this->render('product/new.html.twig', [
             'product' => $product,
-            'form' => $form,
+
         ]);
     }
 
-    #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
-    public function show(Product $product): Response
+    #[Route('/show/{id}', name: 'app_product_show', methods: ['GET','POST'])]
+    public function show(Product $product, Request $request, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository): Response
     {
-        return $this->render('product/show.html.twig', [
-            'product' => $product,
-        ]);
+       
     }
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
@@ -80,7 +80,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {

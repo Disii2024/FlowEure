@@ -99,20 +99,11 @@ footer {
     width: 60%;
 }
 
-<<<<<<< HEAD
-.hidden-burger{
-    display: block;
-}
-=======
-/* @media(min-width: 475px ) {
-    body{
-        background-color: red ;
-    }    
->>>>>>> origin/Kenny
-
-.dispNone {
+.dispNone{
     display: none;
 }
+
+
 
 @media (min-width: 600px) {
     #items-nav {
@@ -142,11 +133,5 @@ footer {
     .hidden-burger {
     display: none !important;
     }
-} */
+} 
 
-@media screen and (max-width: 475px) { 
-    body {
-        background-color: red; 
-    }
-    
-}

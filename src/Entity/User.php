@@ -46,7 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Commentaire::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Commentaire::class, orphanRemoval: true)]
     private Collection $commentaires;
 
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
@@ -54,6 +54,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: DetailCommande::class)]
     private Collection $detailCommandes;
+
+    #[ORM\Column]
+    private ?bool $isActif = null;
 
     public function __construct()
     {
@@ -277,5 +280,17 @@ public function removeDetailCommande(DetailCommande $detailCommande): static
 }
 public function __toString()  {
     return $this->pseudo;
+}
+
+public function isIsActif(): ?bool
+{
+    return $this->isActif;
+}
+
+public function setIsActif(bool $isActif): static
+{
+    $this->isActif = $isActif;
+
+    return $this;
 }
 }

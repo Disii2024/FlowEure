@@ -35,8 +35,4 @@ const nav = document.querySelector("#items-nav");
 burger.addEventListener("click", () => {
     nav.classList.toggle("dispNone");
 });
-
-
-
-
-console.log('hello');
+ console.log('hello')

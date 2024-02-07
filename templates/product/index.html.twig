@@ -10,7 +10,7 @@
         {% for product in pagination %}
         <div>
             <h3> {{ product.titre }} </h3>
-            <img src="{{ product.img }}" width="150px" alt="">
+            <img src="{{asset('images/articles/')}}{{ product.img }}" width="150px" alt="">
             <p>{{ product.prix }}€</p>
             <a class="details" href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
         </div>
