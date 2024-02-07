@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -41,7 +42,9 @@ class UserCrudController extends AbstractCrudController
                 ->renderExpanded(),
             ImageField::new('avatar')
                  ->setBasePath(self::BASE_PATH)
-                 ->setUploadDir(self::UPLOAD_DIR),             
+                 ->setUploadDir(self::UPLOAD_DIR),  
+            BooleanField::new('isActif')
+            ->renderAsSwitch(false),          
         ];
     }
 

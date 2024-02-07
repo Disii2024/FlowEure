@@ -42,7 +42,7 @@
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
                     {# <li><a href="{{path('')}}">Contact</a></li> #}
 
-                    {% if app.user %}
+                    {% if (app.user) or app.user is not empty %}
                     {% for role in app.user.roles %}
                     {% if role == "ROLE_ADMIN" %}
                     <li><a href="{{path('admin')}}">Dashboard</a></li>

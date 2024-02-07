@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -50,14 +51,19 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_profile_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    #[Route('/delete/{id}', name: 'app_profile_delete', methods: ['POST'])]
+    public function delete(Request $request, User $user, EntityManagerInterface $entityManager, UserRepository $UserRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
 
-        return $this->redirectToRoute('app_', [], Response::HTTP_SEE_OTHER);
+            $UserRepository->delete($user);
+
+            $entityManager->flush();
+            }
+            // return ( 
+            //     $this->redirect($this->generateUrl('app_home'));
+            // )
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+
     }
 }
