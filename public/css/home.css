@@ -156,6 +156,11 @@ main #hero-banner {
 
 #explorer-fleurs {
     margin-top: 5rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     #card-yellow {
         border: 10px solid var(--clr-yellow);
