@@ -21,7 +21,6 @@
     {% endblock %}
 
     {% block javascripts %}
-    <script src="/js/app.js"></script>
    
     {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
@@ -32,15 +31,15 @@
         <div>
             <a href="{{path('app_home')}}"><img src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
-        <div id="icon-burger">
+        <div id="icon-burger" class="hidden-burger">
             <i class="fa-solid fa-bars"></i>
         </div>
-        <div id="items-nav" class="dispNone">
+        <div id="items-nav" class="dispNone" >
             <nav>
                 <ul>
                     <li><a href="{{path('app_home')}}">Acceuil</a></li>
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
-                    {# <li><a href="{{path('')}}">Contact</a></li> #}
+                    <li><a href="">Contact</a></li>
 
                     {% if app.user %}
                     {% for role in app.user.roles %}
@@ -97,6 +96,8 @@
             <a href=""><img src="{{asset('img/logo_rs/twitter.png')}}" alt=""></a>
         </div>
     </footer>
+    <script src="/js/app.js"></script>
+
 </body>
 
 </html>

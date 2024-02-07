@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+<section>
+    <div><img src="{{ asset('img/contact/contact.png')}}" alt=""></div>
+    <div><h2>Contactez-nous</h2>
+    
+    <form action="Post">
+        <input type="text" placeholder="Prénom..." aria-label="required">
+        <input type="text" placeholder="Nom...">
+        <input type="text" placeholder="Email...">
+        <input type="text" placeholder="Message...">
+        <input type="submit" value="envoyez">
+    </form>
+</div>
+</section>
+{% endblock %}
