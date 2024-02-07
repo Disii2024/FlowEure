@@ -35,23 +35,23 @@ class AppFixtures extends Fixture
         for ($i=0;$i<20;$i++){
             $user = new User();
             $user->setEmail($faker->email())
-                 ->setPassword($faker->password())
+                 ->setPassword($faker->password('123456'))
                  ->setAvatar($faker->imageUrl($width = 640, $height = 480))
                  ->setPseudo($faker->userName());
 
          $manager->persist($user);
 
         }
-        for ($i=0;$i<20;$i++){
-            $commentaire = new Commentaire();
-            $commentaire->setContenu($faker->sentence(3))
-                        ->setProduct($faker->password())
-                        ->setCreatedAt($faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null)) // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'))
-                        ->setAuteur($faker->firstName());
+        // for ($i=0;$i<20;$i++){
+        //     $commentaire = new Commentaire();
+        //     $commentaire->setContenu($faker->sentence(3))
+        //                 ->setProduct($faker->password('123456'))
+        //                 ->setCreatedAt($faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null)) // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'))
+        //                 ->setAuteur($faker->firstName());
 
-         $manager->persist($user);
+        //  $manager->persist($user);
 
-        }
+        // }
 
         $manager->flush();
     }
