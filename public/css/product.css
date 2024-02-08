@@ -33,3 +33,13 @@ h1 {
 .card_img {
     width: 100%;
 }
+
+#pagination{
+    margin-top: 2rem;
+    a{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: .5rem;
+    color: #000
+        
+    };
+}
