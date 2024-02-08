@@ -1,10 +1,42 @@
-section{
+:root {
+    --clr-green: #dff6d6;
+    --clr-yellow: #FFFBBE;
+    --clr-blue: #BBF6EC;
+    --clr-bg-white: #F1ECE4;
+    --f-lato: "Lato", sans-serif;
+
+}
+
+section {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
 }
 
 
-.input{
+.input {
+    border: none;
+    background: var(--clr-bg-white);
+    box-shadow: 20px 20px 60px #9d9d9d,
+        -20px -20px 60px #ffffff;
+}
 
+input, textarea{
+    width: 300px;
+    height: 50px;
+    margin: .5rem 0;
+    font-family: var(--f-lato);
+    padding-left: .3rem;
+}
+
+
+label{
+    display: none;
+}
+
+.submit{
+    background-color: var(--clr-green);
+    padding: 1rem .4rem;
+    border: none;
 }
