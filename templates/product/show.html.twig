@@ -34,18 +34,32 @@
         </tbody>            
     </table>
 
-    {# <a href="{{ path('app_product_index') }}">back to list</a>
+     <a href="{{ path('app_product_index') }}">back to list</a> 
 
     <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
 
     {{ include('product/_delete_form.html.twig') }}
 
-    <h1>Create new Commentaire</h1>
 
-    {{ include('commentaire/_form.html.twig') }}
 
-    {% for commentaire in commentaires %}
+    <hr>
+    <div class="commentaire">
+        <h4>Listing des commentaires</h4>
+            {% for commentaire in commentaires %}
+
+                Posté par <i>{{commentaire.auteur.pseudo}}</i>, le {{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}
+                <p>
+                    {{ commentaire.contenu}}
+                </p>
+
+            {% endfor %}
+            <hr>
+        <h4>Laisser votre commentaire</h4>
+        {{ include('commentaire/_form.html.twig') }}
+    </div>
+
+    {# {% for commentaire in commentaires %}s
         {{commentaire.contenu}} par
         {{commentaire.auteur.pseudo}}
-    {% endfor %}
+    {% endfor %} #}
 {% endblock %}

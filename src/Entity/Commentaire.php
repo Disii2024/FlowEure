@@ -25,7 +25,10 @@ class Commentaire
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
     private ?Product $product = null;
 
-
+        public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+    }
     
     public function getId(): ?int
     {

@@ -5,18 +5,22 @@
 {% block body %}
 <link rel="stylesheet" href="/css/product.css">
 <section class="container">
-    <h1>Product index</h1>
+    <h1>Nos offres</h1>
+
     <div id="products">
         {% for product in pagination %}
+
         <div>
             <h3> {{ product.titre }} </h3>
             <img src="{{ product.img }}" width="150px" alt="">
             <p>{{ product.prix }}€</p>
             <a class="details" href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
         </div>
+        
         {% else %}
         <p>pas de produits</p>
         {% endfor %}
+
     </div>
     {{ knp_pagination_render(pagination)}}
 </section>
