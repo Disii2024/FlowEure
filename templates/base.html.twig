@@ -22,7 +22,7 @@
 
     {% block javascripts %}
     <script defer src="{{asset('js/app.js')}}"></script>
-   
+
     {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
     {% endblock %}
 </head>
@@ -35,7 +35,7 @@
         <div id="icon-burger" class="hidden-burger">
             <i class="fa-solid fa-bars"></i>
         </div>
-        <div id="items-nav" class="dispNone" >
+        <div id="items-nav" class="dispNone">
             <nav>
                 <ul>
                     <li><a href="{{path('app_home')}}">Acceuil</a></li>
@@ -58,12 +58,13 @@
                 {% if app.user %}
 
                 <li>
-                     <a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a> 
+                    <a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
-                <li><a  href="/profile"><img id="avatar" src="{{asset('images/avatars/')}}{{app.user.avatar}}"
+                <li><a href="/profile"><img id="avatar" src="{{asset('images/avatars/')}}{{app.user.avatar}}"
                             class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> </a>
-                        <p>{{app.user.pseudo}}</p></li>
-                    
+                    <p>{{app.user.pseudo}}</p>
+                </li>
+
                 <li><a href="{{path('app_logout')}}">Deconnexion</a></li>
 
                 </li>
@@ -79,6 +80,7 @@
         {% block body %}
         {% endblock %}
     </main>
+    {% block footer %}
     <footer>
         <div class="logo-nav">
             <a href="{{path('app_home')}}"><img src="{{asset('img/logo.svg')}}" alt=""></a>
@@ -93,7 +95,7 @@
             <a href=""><img src="{{asset('img/logo_rs/twitter.png')}}" alt=""></a>
         </div>
     </footer>
-
+    {% endblock %}
 </body>
 
 </html>
