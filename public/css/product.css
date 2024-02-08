@@ -11,6 +11,7 @@ h1 {
 #products{
     display: flex !important;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 10px auto;
     gap: 2rem;
     a{
@@ -23,8 +24,10 @@ h1 {
 }
 
 .products_card {
-    background-color: #FFF;
-    width: calc(var(--nbr-gap)/ var(--nbr-product))
+    /* background-color: #FFF; */
+    width: calc(var(--nbr-gap)/ var(--nbr-product));
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card_img {
