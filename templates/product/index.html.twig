@@ -13,6 +13,7 @@
             <img src="{{ product.img }}" width="150px" alt="">
             <p>{{ product.prix }}€</p>
             <a class="details" href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
+            <a href="{{path('app_ajout_panier', {'id': product.id})}}">jkvf</a>
         </div>
         {% else %}
         <p>pas de produits</p>
