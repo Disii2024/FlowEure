@@ -10,7 +10,7 @@
     --clr-: red;
 }
 
-main {
+main , header, footer{
     font-family: var(--f-lato);
 }
 
@@ -227,3 +227,61 @@ main #hero-banner {
     padding: 1rem .7rem;
 
 }
+ @media (min-width: 600px) {
+    #livraison-fleurs{
+        height: 100vh;
+        position: relative;
+        display: flex;
+        #livraison-yellow{
+            position: absolute;
+            z-index: 20;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            #text-yellow{
+                top: 0;
+            }
+
+        }
+        #livraison-green{
+            position: absolute;
+            z-index: 19;
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            #text-green{
+                z-index: 30;
+            }
+
+        }
+        #img-home-2{
+            left: 100%;
+        }
+        #livraison-blue{
+            position: absolute;
+            z-index: 18;
+            top: 50%;
+            left: 28%;
+            transform: translate(-50%, -50%);
+
+        }
+    }
+    #explorer-fleurs{
+        #card-blue{
+            height: 100vh;
+        }
+        #two-cards{
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+    }
+    #explorer-fleurs > div{
+        display: flex;
+        gap: 3rem;
+        height: 100vh;
+    }
+    .flex{
+        display: flex;
+    }
+ }

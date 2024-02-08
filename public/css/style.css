@@ -14,12 +14,18 @@
 a{
     color: #fff;
     text-decoration: none;
+
 }
+h1,h2,h3{
+    font-family: "Italiana", sans-serif;
+}
+
 
 body {
     margin-top: 5rem;
     background-color: var(--clr-bg-white) !important;
-    font-size: "Lato", sans-serif !important;
+    font-family: "Lato", sans-serif !important;
+
 }
 
 
