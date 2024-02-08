@@ -34,11 +34,21 @@
     </tbody>
 </table>
 
-<a href="{{ path('app_product_index') }}">back to list</a>
+<a href="{{ path('app_product_index') }}">Revenir a la liste</a>
 
-<a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    {% if app.user %}
+                    {% for role in app.user.roles %}
+                    {% if role == "ROLE_ADMIN" %}
 
-{{ include('product/_delete_form.html.twig') }}
+                    <br> <button><a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a></button>
+
+                    {{ include('product/_delete_form.html.twig') }}
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+
 
 
 
