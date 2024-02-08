@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="/css/product.css">
+<section class="container">
+    <h1>Nos offres</h1>
+
+    <div id="products">
+        {% for product in pagination %}
+
+        <div class="products_card">
+            <div class="card_img">
+                <img src="{{ product.img }}" width="100%"  alt="">
+            </div>
+            <h3> {{ product.titre }} </h3>
+            <p>{{ product.prix }}€</p>
+            <a class="details" href="{{ path('app_product_show', {'id': product.id}) }}">Voir détails</a>
+            <a href="{{path('app_ajout_panier', {'id': product.id})}}"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        {% else %}
+        <p>pas de produits</p>
+        {% endfor %}
+
+    </div>
+    <div id="pagination">
+        {{ knp_pagination_render(pagination)}}
+    </div>
+</section>
+{% endblock %}

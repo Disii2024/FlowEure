@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{asset('css/contact.css')}}">
+<section class="container">
+
+
+
+    <div>
+        <h2>Contactez-nous</h2>
+        {% for message in app.flashes('succes') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+{{ form(form) }}
+</div>
+    <div id="contact-image"><img src="{{ asset('img/contact/contact.png')}}" class="img" alt=""></div>
+</section>
+{% endblock %}

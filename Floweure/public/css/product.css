@@ -1,0 +1,45 @@
+:root {
+    --nbr-product:5 ;
+    --nbr-gap: calc(((100%) - (2rem*((var(--nbr-product))))))
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+#products{
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px auto;
+    gap: 2rem;
+    a{
+        color: #000;
+    }
+}
+
+.details{
+    border: 1px ;
+}
+
+.products_card {
+    /* background-color: #FFF; */
+    width: calc(var(--nbr-gap)/ var(--nbr-product));
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card_img {
+    width: 100%;
+}
+
+#pagination{
+    margin-top: 2rem;
+    a{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: .5rem;
+    color: #000
+        
+    };
+}

@@ -1,0 +1,26 @@
+ul li {
+    list-style: none;
+    margin: 2px 0;
+    font-size: 1.5rem !important;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+}
+
+div {
+    margin: 10px auto !important; 
+}
+
+p {
+    font-size: 1.5rem !important;
+}
+
+
+
