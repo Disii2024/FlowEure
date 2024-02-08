@@ -60,15 +60,11 @@ class ProductController extends AbstractController
     public function show(Product $product,Request $request, EntityManagerInterface $entityManager,
     CommentaireRepository $commentaireRepository): Response
     {
-     /**
-      * 
-      */
-      $commentaire = new Commentaire();
+        $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $commentaire->setAuteur($this->getUser());
 
             $commentaire->setProduct($product);
@@ -76,15 +72,15 @@ class ProductController extends AbstractController
             $entityManager->persist($commentaire);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_commentaire_index', [], Response::HTTP_SEE_OTHER);
+            // return $this->redirectToRoute('app_commentaire_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_product_show', ['id' =>$product->getId()]);
+
         }
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
             'form' => $form,
-            // // 'commentaires' => $product
-            // 'commentaires' => $commentaireRepository->findBy(['product'=>$product])
-           
+            'commentaires' => $commentaireRepository->findBy(['product' => $product])
         ]);
     }
 

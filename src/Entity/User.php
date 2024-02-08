@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,7 +19,7 @@ use Symfony\Component\Serializer\Serializer;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Vich\Uploadable]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -170,6 +171,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
         return $this;
     }
 
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setAuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getAuteur() === $this) {
+                $commentaire->setAuteur(null);
+            }
+        }
+
+        return $this;
+    }
 
     public function serialize() {
 
@@ -196,28 +226,6 @@ public function unserialize($serialized) {
 public function getCommandes(): Collection
 {
     return $this->commandes;
-}
-
-public function addCommande(Commande $commande): static
-{
-    if (!$this->commandes->contains($commande)) {
-        $this->commandes->add($commande);
-        $commande->setUtilisateur($this);
-    }
-
-    return $this;
-}
-
-public function removeCommande(Commande $commande): static
-{
-    if ($this->commandes->removeElement($commande)) {
-        // set the owning side to null (unless already changed)
-        if ($commande->getUtilisateur() === $this) {
-            $commande->setUtilisateur(null);
-        }
-    }
-
-    return $this;
 }
 
 /**
