@@ -57,7 +57,7 @@
                 {% if app.user %}
 
                 <li>
-                    <a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                    {# <a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a> #}
                 </li>
                 <li><a  href="/profile"><img id="avatar" src="{{asset('images/avatars/')}}{{app.user.avatar}}"
                             class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> </a>
@@ -83,8 +83,8 @@
             <a href="{{path('app_home')}}"><img src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <nav>
-            <a href="">Mentions légales</a>
-            <a href="">CGV</a>
+            <a href="/mentionlegales">Mentions légales</a>
+            <a href="/CGV">CGV</a>
         </nav>
         <div id="reseaux">
             <a href=""><img src="{{asset('img/logo_rs/instagram.png')}}" alt=""></a>

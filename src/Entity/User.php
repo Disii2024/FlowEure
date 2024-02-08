@@ -46,9 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Commentaire::class, orphanRemoval: true)]
-    private Collection $commentaires;
-
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
     private Collection $commandes;
 
@@ -58,11 +55,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\Column]
     private ?bool $isActif = null;
 
+    #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Commentaire::class)]
+    private Collection $commentaires;
+
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection();
         $this->commandes = new ArrayCollection();
         $this->detailCommandes = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,35 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commentaire>
-     */
-    public function getCommentaires(): Collection
-    {
-        return $this->commentaires;
-    }
-
-    public function addCommentaire(Commentaire $commentaire): static
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires->add($commentaire);
-            $commentaire->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaire $commentaire): static
-    {
-        if ($this->commentaires->removeElement($commentaire)) {
-            // set the owning side to null (unless already changed)
-            if ($commentaire->getAuthor() === $this) {
-                $commentaire->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function serialize() {
 
@@ -278,10 +249,6 @@ public function removeDetailCommande(DetailCommande $detailCommande): static
 
     return $this;
 }
-public function __toString()  {
-    return $this->pseudo;
-}
-
 public function isIsActif(): ?bool
 {
     return $this->isActif;
@@ -293,4 +260,41 @@ public function setIsActif(bool $isActif): static
 
     return $this;
 }
+
+
+public function __toString()  {
+    return $this->pseudo;
+}
+
+/**
+ * @return Collection<int, Commentaire>
+ */
+public function getCommentaires(): Collection
+{
+    return $this->commentaires;
+}
+
+public function addCommentaire(Commentaire $commentaire): static
+{
+    if (!$this->commentaires->contains($commentaire)) {
+        $this->commentaires->add($commentaire);
+        $commentaire->setAuteur($this);
+    }
+
+    return $this;
+}
+
+public function removeCommentaire(Commentaire $commentaire): static
+{
+    if ($this->commentaires->removeElement($commentaire)) {
+        // set the owning side to null (unless already changed)
+        if ($commentaire->getAuteur() === $this) {
+            $commentaire->setAuteur(null);
+        }
+    }
+
+    return $this;
+}
+
+
 }

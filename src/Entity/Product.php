@@ -48,6 +48,7 @@ class Product
         $this->commentaires = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,4 +154,6 @@ class Product
 
         return $this;
     }
+
+    
 }

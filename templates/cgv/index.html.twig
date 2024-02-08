@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CGVController!{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{asset('css/ml_cgv.css')}}">
+<div class="container">
+    <h1>Conditions Générales de Vente (CGV)</h1>
+
+    <h2>1. Champ d'application</h2>
+    <p>Les présentes conditions générales de vente s'appliquent à toutes les ventes de fleurs et de produits floraux
+        effectuées sur le site Flow'Eure. En passant commande sur notre site, le client reconnaît avoir pris
+        connaissance et accepté sans réserve les présentes conditions générales de vente.</p>
+
+    <h2>2. Produits</h2>
+    <p>Les produits proposés à la vente sont ceux figurant sur le site au moment de la commande. Les photographies des
+        produits sont fournies à titre illustratif et ne sont pas contractuelles. Des variations dans la couleur et la
+        taille des fleurs peuvent survenir en fonction de la saison et de la disponibilité des produits.</p>
+
+    <h2>3. Commande</h2>
+    <p>Le client passe commande sur le site en suivant le processus de commande indiqué. Toute commande vaut acceptation
+        des prix et descriptions des produits disponibles à la vente. Après validation de sa commande, le client recevra
+        un email de confirmation récapitulant les éléments de sa commande.</p>
+
+    <h2>4. Prix</h2>
+    <p>Les prix des produits sont indiqués en euros et s'entendent toutes taxes comprises. Les frais de livraison sont
+        précisés lors du processus de commande et sont à la charge du client.</p>
+
+    <h2>5. Paiement</h2>
+    <p>Le paiement s'effectue en ligne par carte bancaire ou tout autre moyen de paiement accepté sur le site. Le
+        paiement est sécurisé et les informations bancaires du client ne sont pas conservées par Flow'Eure</p>
+
+    <h2>6. Livraison</h2>
+    <p>Les produits commandés sont livrés à l'adresse indiquée par le client lors du processus de commande. Les délais
+        de livraison sont indiqués lors de la validation de la commande et peuvent varier en fonction de la
+        disponibilité des produits et du lieu de livraison.</p>
+
+    <h2>7. Rétractation</h2>
+    <p>Conformément à la législation en vigueur, le client dispose d'un délai de rétractation de 14 jours à compter de
+        la réception des produits pour exercer son droit de rétractation, sans avoir à justifier de motifs ni à payer de
+        pénalités, à l'exception des frais de retour qui restent à sa charge.</p>
+
+    <h2>8. Service client</h2>
+    <p>Pour toute question ou réclamation, le service client est joignable par email à Floweure.SC@hotmail.fr ou par
+        téléphone au 06 66 66 66 66.</p>
+
+    <h2>9. Données personnelles</h2>
+    <p>Les données personnelles collectées lors de la commande sont traitées dans le respect de la législation en
+        vigueur sur la protection des données personnelles. Le client dispose d'un droit d'accès, de rectification et de
+        suppression de ses données personnelles.</p>
+
+    <h2>10. Litiges</h2>
+    <p>En cas de litige, une solution amiable sera recherchée en priorité. À défaut, les tribunaux compétents seront
+        ceux du lieu de domicile du défendeur ou, au choix du demandeur, du lieu de livraison effective du produit.</p>
+
+    <p>En acceptant les présentes conditions générales de vente, le client déclare avoir la capacité juridique pour
+        contracter et être majeur dans son pays de résidence.</p>
+</div>
+{% endblock %}

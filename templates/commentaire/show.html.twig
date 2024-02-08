@@ -12,12 +12,12 @@
                 <td>{{ commentaire.id }}</td>
             </tr>
             <tr>
-                <th>Contenu</th>
-                <td>{{ commentaire.contenu }}</td>
+                <th>Created_at</th>
+                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Contenu</th>
+                <td>{{ commentaire.contenu }}</td>
             </tr>
         </tbody>
     </table>

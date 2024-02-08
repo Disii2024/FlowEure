@@ -40,7 +40,7 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            //$entityManager->flush();
 
             return $this->redirectToRoute('app_profile_edit', [], Response::HTTP_SEE_OTHER);
         }
