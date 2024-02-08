@@ -3,63 +3,71 @@
 {% block title %}Product{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
+<h1>Product</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ product.titre }}</td>
-            </tr>
-            <tr>
-                <th>Descrip</th>
-                <td>{{ product.descrip }}</td>
-            </tr>
-            <tr>
-                <th>Img</th>
-                <td>{{ product.img }}</td>
-            </tr>
-            <tr>
-                <th>Qte</th>
-                <td>{{ product.qte }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ product.prix }}</td>
-            </tr>
-        </tbody>            
-    </table>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ product.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ product.titre }}</td>
+        </tr>
+        <tr>
+            <th>Descrip</th>
+            <td>{{ product.descrip }}</td>
+        </tr>
+        <tr>
+            <th>Img</th>
+            <td>{{ product.img }}</td>
+        </tr>
+        <tr>
+            <th>Qte</th>
+            <td>{{ product.qte }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ product.prix }}</td>
+        </tr>
+    </tbody>
+</table>
 
-     <a href="{{ path('app_product_index') }}">back to list</a> 
+<a href="{{ path('app_product_index') }}">back to list</a>
 
-    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+<a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
 
-    {{ include('product/_delete_form.html.twig') }}
+{{ include('product/_delete_form.html.twig') }}
 
 
 
-    <hr>
-    <div class="commentaire">
-        <h4>Listing des commentaires</h4>
-            {% for commentaire in commentaires %}
+<hr>
+<div class="commentaire">
+    <h4>Listing des commentaires</h4>
+    {% for commentaire in commentaires %}
 
-                Posté par <i>{{commentaire.auteur.pseudo}}</i>, le {{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}
-                <p>
-                    {{ commentaire.contenu}}
-                </p>
+    Posté par <i>{{commentaire.auteur.pseudo}}</i>, le
+    {{ commentaire.createdAt ? commentaire.createdAt|date('d-m-Y H:i:s') : '' }}
+    <p>
+        {{ commentaire.contenu}}
+    </p>
 
-            {% endfor %}
-            <hr>
+    {% endfor %}
+
+
+
+
+{# {% for commentaire in commentaires %}s
+        {{commentaire.contenu}} par
+        {{commentaire.auteur.pseudo}}
+    {% endfor %} #}
+
+    {% if app.user %}
+        <hr>
         <h4>Laisser votre commentaire</h4>
         {{ include('commentaire/_form.html.twig') }}
     </div>
 
-    {# {% for commentaire in commentaires %}s
-        {{commentaire.contenu}} par
-        {{commentaire.auteur.pseudo}}
-    {% endfor %} #}
+                {% endif %}
 {% endblock %}
