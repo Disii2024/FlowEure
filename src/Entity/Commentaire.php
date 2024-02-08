@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\User;
 use App\Repository\CommentaireRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,7 +13,10 @@ class Commentaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
+
+    #[ORM\Column(length: 150)]
     private ?string $contenu = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
@@ -33,6 +35,18 @@ class Commentaire
         return $this->id;
     }
 
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
     public function getContenu(): ?string
     {
         return $this->contenu;
@@ -45,30 +59,6 @@ class Commentaire
         return $this;
     }
 
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(?Product $product): static
-    {
-        $this->product = $product;
-
-        return $this;
-    }
-
-     public function getCreatedAt(): ?\DateTimeImmutable
-     {
-         return $this->createdAt;
-     }
-
-      public function setCreatedAt(\DateTimeImmutable $createdAt): static
-      {
-          $this->createdAt = $createdAt;
-
-          return $this;
-      }
-
     public function getAuteur(): ?User
     {
         return $this->auteur;
@@ -77,6 +67,18 @@ class Commentaire
     public function setAuteur(?User $auteur): static
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): static
+    {
+        $this->product = $product;
 
         return $this;
     }
