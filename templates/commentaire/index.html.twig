@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Created_at</th>
                 <th>Contenu</th>
+                <th>CreatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,8 +18,8 @@
         {% for commentaire in commentaires %}
             <tr>
                 <td>{{ commentaire.id }}</td>
-                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ commentaire.contenu }}</td>
+                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">show</a>
                     <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a>

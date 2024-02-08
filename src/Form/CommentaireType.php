@@ -17,13 +17,14 @@ class CommentaireType extends AbstractType
         $builder
             // ->add('created_at')
             ->add('contenu')
-//             ->add('auteur', EntityType::class, [
-//                 'class' => User::class,
-// 'choice_label' => 'id',
-//             ])
+//             ->add('createdAt')
 //             ->add('product', EntityType::class, [
 //                 'class' => Product::class,
-// 'choice_label' => 'id',
+// 'choice_label' => 'Titre',
+//             ])
+//             ->add('auteur', EntityType::class, [
+//                 'class' => User::class,
+// 'choice_label' => 'pseudo',
 //             ])
         ;
     }

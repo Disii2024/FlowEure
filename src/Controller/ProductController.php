@@ -52,13 +52,12 @@ class ProductController extends AbstractController
 
         return $this->render('product/new.html.twig', [
             'product' => $product,
-            'form' => $form,
+
         ]);
     }
 
     #[Route('/show/{id}', name: 'app_product_show', methods: ['GET','POST'])]
-    public function show(Product $product,Request $request, EntityManagerInterface $entityManager,
-    CommentaireRepository $commentaireRepository): Response
+    public function show(Product $product, Request $request, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository): Response
     {
         $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire);
