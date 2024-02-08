@@ -40,5 +40,12 @@
 
     {{ include('product/_delete_form.html.twig') }}
 
+    <h1>Create new Commentaire</h1>
 
+    {{ include('commentaire/_form.html.twig') }}
+
+    {% for commentaire in commentaires %}
+        {{commentaire.contenu}} par
+        {{commentaire.auteur.pseudo}}
+    {% endfor %}
 {% endblock %}
