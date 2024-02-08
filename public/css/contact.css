@@ -39,4 +39,5 @@ label{
     background-color: var(--clr-green);
     padding: 1rem .4rem;
     border: none;
+    cursor: pointer;
 }
