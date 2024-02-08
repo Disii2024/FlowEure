@@ -31,17 +31,17 @@
         <div>
             <a href="{{path('app_home')}}"><img src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
-        <div id="icon-burger">
+        <div id="icon-burger" class="hidden-burger">
             <i class="fa-solid fa-bars"></i>
         </div>
-        <div id="items-nav" class="dispNone">
+        <div id="items-nav" class="dispNone" >
             <nav>
                 <ul>
                     <li><a href="{{path('app_home')}}">Acceuil</a></li>
                     <li><a href="{{path('app_product_index')}}">Nos offres</a></li>
-                    {# <li><a href="{{path('')}}">Contact</a></li> #}
+                    <li><a href="{{path('app_contact')}}">Contact</a></li>
 
-                    {% if (app.user) or app.user is not empty %}
+                    {% if app.user %}
                     {% for role in app.user.roles %}
                     {% if role == "ROLE_ADMIN" %}
                     <li><a href="{{path('admin')}}">Dashboard</a></li>
@@ -51,11 +51,6 @@
                     {% endif %}
 
                 </ul>
-               
-                    
-                 
-
-
             </nav>
 
             <ul>
@@ -64,9 +59,10 @@
                 <li>
                     <a href="{{path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
-                <li>
-                    <a href="/profile"><img src="{{asset('images/avatars/')}}{{app.user.avatar}}"
-                            class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> {{app.user.pseudo}}</a>
+                <li><a  href="/profile"><img id="avatar" src="{{asset('images/avatars/')}}{{app.user.avatar}}"
+                            class="rounded-circle shadow-4" style="width: 50px;" alt="Avatar" /> </a>
+                        <p>{{app.user.pseudo}}</p></li>
+                    
                 <li><a href="{{path('app_logout')}}">Deconnexion</a></li>
 
                 </li>
@@ -96,6 +92,7 @@
             <a href=""><img src="{{asset('img/logo_rs/twitter.png')}}" alt=""></a>
         </div>
     </footer>
+
 </body>
 
 </html>
